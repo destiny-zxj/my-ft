@@ -1,0 +1,16 @@
+model_name: destinyzxj/llama-3-chinese-8b-instruct-v3  # unsloth/llama-3-8b-bnb-4bit  # 训练底模
+dataset: yahma/alpaca-cleaned  # 训练数据集
+epochs: 3  # 训练轮数
+max_steps: -1  # 总训练步骤数，默认：-1。正数会覆盖 num_train_epochs
+max_seq_length: 5120  # 序列最大长度
+logging_steps: 5
+load_in_4bit: True  # 4 bit
+r: 16
+target_modules: ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]
+lora_alpha: 16
+lora_output_dir: lora_model  # 输出 lora 文件夹名称
+lora_save_as_gguf: False  # 是否保存 gguf 模型 (WSL 8G 回报错)
+lora_save_method: merged_16bit  # 模型合并方式
+lora_quantization_method: q4_0  # 模型合并量化方式 (仅保存为 gguf 时有效)
+save_model_name: model  # 模型合并保存名称
+quantization_type: Q8_0  # 模型量化方法
